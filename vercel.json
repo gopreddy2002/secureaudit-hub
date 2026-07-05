@@ -7,21 +7,21 @@
     },
     "backend": {
       "root": "backend",
-      "entrypoint": "app.py"
+      "framework": "fastapi",
+      "runtime": "python",
+      "entrypoint": "app:app"
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
       "destination": {
-        "type": "service",
         "service": "backend"
       }
     },
     {
       "source": "/(.*)",
       "destination": {
-        "type": "service",
         "service": "frontend"
       }
     }
