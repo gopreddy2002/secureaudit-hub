@@ -5,13 +5,9 @@ const ISO27001 = () => {
   const [controls, setControls] = useState([]);
 
   useEffect(() => {
-    // In a real app, this would fetch from the backend API
-    // axios.get('http://localhost:8000/api/controls').then(res => setControls(res.data));
-    setControls([
-      { id: 'A.5.1', name: 'Policies for Information Security', category: 'Information security policies', status: 'Compliant' },
-      { id: 'A.6.1', name: 'Internal Organization', category: 'Organization of information security', status: 'Non-Compliant' },
-      { id: 'A.7.1', name: 'Prior to Employment', category: 'Human resource security', status: 'Not Started' },
-    ]);
+    axios.get('/api/controls')
+      .then(res => setControls(res.data))
+      .catch(err => console.error("Error fetching controls:", err));
   }, []);
 
   return (
