@@ -53,6 +53,7 @@ class ControlResponse(ControlBase):
     id: int
     standard_id: int
     created_at: datetime
+    status: Optional[str] = None
 
     class Config:
         from_attributes = True

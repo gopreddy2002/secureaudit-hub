@@ -16,6 +16,7 @@ from routes import (
     evidence_routes,
     risk_routes,
     report_routes,
+    dashboard_routes
 )
 
 # Create database tables
@@ -72,6 +73,7 @@ app.include_router(audit_routes.router, prefix="/api/audits", tags=["Audits"])
 app.include_router(evidence_routes.router, prefix="/api/evidence", tags=["Evidence"])
 app.include_router(risk_routes.router, prefix="/api/risks", tags=["Risks"])
 app.include_router(report_routes.router, prefix="/api/reports", tags=["Reports"])
+app.include_router(dashboard_routes.router, prefix="/api/dashboard", tags=["Dashboard"])
 
 if __name__ == "__main__":
     # pyrefly: ignore [missing-import]
