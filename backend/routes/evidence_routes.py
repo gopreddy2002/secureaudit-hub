@@ -23,7 +23,11 @@ def upload_evidence(
     # Create unique filename
     file_ext = os.path.splitext(file.filename)[1]
     unique_filename = f"{uuid.uuid4()}{file_ext}"
-    file_path = os.path.join("backend", "uploads", "evidence", unique_filename)
+    
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    EVIDENCE_DIR = os.path.join(BASE_DIR, "uploads", "evidence")
+    os.makedirs(EVIDENCE_DIR, exist_ok=True)
+    file_path = os.path.join(EVIDENCE_DIR, unique_filename)
     
     # Save file
     with open(file_path, "wb") as buffer:

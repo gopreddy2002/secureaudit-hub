@@ -36,6 +36,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+import os
+from fastapi.staticfiles import StaticFiles
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOADS_DIR = os.path.join(BASE_DIR, "uploads")
+EVIDENCE_DIR = os.path.join(UPLOADS_DIR, "evidence")
+REPORTS_DIR = os.path.join(UPLOADS_DIR, "reports")
+
+os.makedirs(EVIDENCE_DIR, exist_ok=True)
+os.makedirs(REPORTS_DIR, exist_ok=True)
+
+app.mount("/uploads", StaticFiles(directory=UPLOADS_DIR), name="uploads")
+
 # Root route
 @app.get("/")
 def read_root():
