@@ -40,15 +40,15 @@ const Reports = () => {
     <div>
       <h1>Audit Reports</h1>
       <p style={{ color: 'var(--text-secondary)' }}>Generate and view audit reports.</p>
-      
+
       <div className="card" style={{ marginTop: '2rem' }}>
         <h3 className="card-title">Generate New Report</h3>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
           <div className="input-group" style={{ margin: 0, flex: 1 }}>
             <label>Select Standard</label>
-            <select 
-              className="input-field" 
-              value={selectedStandard} 
+            <select
+              className="input-field"
+              value={selectedStandard}
               onChange={(e) => setSelectedStandard(e.target.value)}
             >
               <option value={1}>ISO 27001 (Standard ID 1)</option>
@@ -56,9 +56,9 @@ const Reports = () => {
               <option value={3}>ISO 42001 (Standard ID 3)</option>
             </select>
           </div>
-          <button 
-            className="btn btn-primary" 
-            style={{ padding: '0.9rem 1.5rem' }} 
+          <button
+            className="btn btn-primary"
+            style={{ padding: '0.9rem 1.5rem' }}
             onClick={handleGenerate}
             disabled={generating}
           >
@@ -66,7 +66,7 @@ const Reports = () => {
           </button>
         </div>
       </div>
-      
+
       <div className="card">
         <h3 className="card-title">Past Reports</h3>
         <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -81,11 +81,11 @@ const Reports = () => {
                   <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Generated on {new Date(report.created_at).toLocaleString()}</div>
                 </div>
               </div>
-              <a 
-                href={`http://127.0.0.1:8000${report.file_path}`} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="btn" 
+              <a
+                href={`http://127.0.0.1:8000${report.file_path}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn"
                 style={{ border: '1px solid var(--primary-color)', background: 'rgba(99, 102, 241, 0.1)', color: 'var(--primary-color)', textDecoration: 'none' }}
               >
                 <Download size={16} /> View Report

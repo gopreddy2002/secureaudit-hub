@@ -23,7 +23,7 @@ const Evidence = () => {
   const handleFileChange = async (e) => {
     if (!e.target.files || e.target.files.length === 0) return;
     const selectedFile = e.target.files[0];
-    
+
     setUploading(true);
     const formData = new FormData();
     formData.append('file', selectedFile);
@@ -49,24 +49,24 @@ const Evidence = () => {
     <div>
       <h1>Evidence Repository</h1>
       <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>Upload and manage compliance evidence files.</p>
-      
-      <div 
-        className="card" 
+
+      <div
+        className="card"
         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '3rem', border: '2px dashed var(--primary-color)', backgroundColor: 'rgba(99, 102, 241, 0.05)', cursor: 'pointer' }}
         onClick={() => fileInputRef.current?.click()}
       >
         <Upload size={48} color="var(--primary-color)" style={{ marginBottom: '1rem' }} />
         <h3 style={{ marginBottom: '0.5rem' }}>{uploading ? 'Uploading...' : 'Click to Upload Files'}</h3>
         <p style={{ color: 'var(--text-secondary)' }}>Supported formats: PDF, DOCX, JPG, PNG</p>
-        <input 
-          type="file" 
-          style={{ display: 'none' }} 
-          ref={fileInputRef} 
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          ref={fileInputRef}
           onChange={handleFileChange}
           disabled={uploading}
         />
       </div>
-      
+
       <div className="card">
         <h3 className="card-title">Recent Uploads</h3>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
